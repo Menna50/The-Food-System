@@ -11,8 +11,8 @@ namespace ECommerce.Migrations
            /* migrationBuilder.RenameColumn(
                 name: "Photo",
                 table: "MenuItems",
-                newName: "image");*/
-
+                newName: "image");
+           
             migrationBuilder.AddColumn<bool>(
                 name: "Offer",
                 table: "MenuItems",
@@ -24,12 +24,12 @@ namespace ECommerce.Migrations
                 name: "AdminCheck",
                 table: "AspNetUsers",
                 type: "bit",
-                nullable: true);
+                nullable: true);*/
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
+           /* migrationBuilder.DropColumn(
                 name: "Offer",
                 table: "MenuItems");
 
@@ -37,7 +37,7 @@ namespace ECommerce.Migrations
                 name: "AdminCheck",
                 table: "AspNetUsers");
 
-            /*migrationBuilder.RenameColumn(
+            migrationBuilder.RenameColumn(
                 name: "image",
                 table: "MenuItems",
                 newName: "Photo");*/
