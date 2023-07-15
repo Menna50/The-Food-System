@@ -13,16 +13,30 @@ export class HeaderComponent implements OnInit {
   total:any=0;
   quantaty:any;
   pricequentity:any;
+username:any;
+loginFlag:boolean = true;
+usernameFlag:boolean = false;
 
   constructor(public castservice:SideCartService , public auth:AuthServicesService){
   }
 
-  ngOnInit(): void 
+  ngOnInit(): void
   {
     // throw new Error('Method not implemented.');
       this.castservice.gitcartitems()
        this.dishesInCart  = this.castservice.dishesInCart
-     
+
+         this.username=JSON.parse(localStorage.getItem("user")!).userName;
+         if(this.username){
+          this.usernameFlag = true;
+          this.loginFlag = false;
+         }
+         else{
+          this.usernameFlag = false;
+          this.loginFlag = true;
+         }
+
+console.log("user: ",this.username);
   }
 
 

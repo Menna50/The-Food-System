@@ -46,17 +46,28 @@
               </li> -->
               <li ><a  routerLink="/AllResturants">All Resturant</a>
                 <li ><a  routerLink="/cart">Cart</a>
-              <li><a routerLink="/news.html">News</a>
-                <ul class="sub-menu">
+              <!-- <li><a routerLink="/news.html">News</a> -->
+                <!-- <ul class="sub-menu">
                   <li><a routerLink="/news.html">News</a></li>
                   <li><a routerLink="/single-news.html">Single News</a></li>
-                </ul>
+                </ul> -->
               </li>
               <li><a routerLink="/contactus">Contact</a></li>
-                <li ><a id="Toggle" routerLink="/login">Login/Registration</a>
+              <li ><a id="Toggle" style="color:aliceblue" *ngIf = "usernameFlag" >Welcome, {{username}}!</a>
+
+                <li ><a id="Toggle" *ngIf="loginFlag;else logoutBlock" routerLink="/login">Login/Registration</a>
+
 
               </li>
-              <li><a routerLink="/login" (click)="logout()">LogOut</a>
+              <!-- <li><a routerLink="/login" *ngIf="logoutFlag" (click)="logout()">LogOut</a>
+            </li> -->
+            <li>
+              <ng-template #logoutBlock>
+
+
+                  <a routerLink="/login" (click)="logout()">LogOut</a>
+
+            </ng-template>
             </li>
               <li>
 
@@ -67,11 +78,7 @@
                   </li>
               </ng-template> -->
 
-                <ng-template #logoutBlock>
 
-                    <li><a routerLink="/login" (click)="logout()">LogOut</a>
-                    </li>
-                </ng-template>
 
                 <div class="sidebar-nav">
                   <nav >
