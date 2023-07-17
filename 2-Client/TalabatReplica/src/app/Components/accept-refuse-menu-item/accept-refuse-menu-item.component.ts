@@ -24,10 +24,11 @@ constructor(private menuItemServices: MenuItemService, private rout:ActivatedRou
 
     this.menuItemServices.GetItemById(this.id).subscribe({
       next:(data:any)=>{this.menuItem=data ;
-      console.log(this.menuItem)
+      console.log("data",this.menuItem)
+      console.log("ffff",this.menuItem.offer,this.menuItem.isTopItem);
       this.myValidations.patchValue({
         name:this.menuItem.name ,
-       // itItem:this.menuItem.itItem,
+        itItem:this.menuItem.itItem,
         description:this.menuItem.description,
         price:this.menuItem.price,
         size:this.menuItem.size,
@@ -38,7 +39,9 @@ constructor(private menuItemServices: MenuItemService, private rout:ActivatedRou
         isTopItem:this.menuItem.isTopItem
 
 
-      })},
+
+      }
+      )},
       error:(err)=>{console.log(err.error) }
     })
   }
@@ -115,21 +118,21 @@ formData.append('itemID',this.menuItem.itemID);
         formData.append('ResturantID',resturantID);
         formData.append('image',this.menuItem.image);
 
-        if(IsTop == 'on'){
-          formData.append('IsTopItem','true');
-        }
-        else
-        {
-          formData.append('IsTopItem','false');
-        }
+        //if(IsTop == 'on'){
+          formData.append('IsTopItem',IsTop);
+      //  }
+       // else
+       // {
+          //formData.append('IsTopItem','false');
+       // }
 
-        if( offer == 'on' ){
-          formData.append('offer','true');
+       // if( offer == 'on' ){
+          formData.append('Offer',offer);
 
-        }else
-        {
-          formData.append('offer',"false");
-        }
+       // }else
+       // {
+       //   formData.append('offer',"false");
+       // }
 
 
 
