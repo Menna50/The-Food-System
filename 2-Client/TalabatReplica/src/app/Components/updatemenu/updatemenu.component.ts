@@ -64,6 +64,8 @@ export class UpdatemenuComponent  {
 
 
   updateItem(itemID:any,name:any,price:any,description:any,size:any,IsTop:any,resturantID:any,offer:any,categoryID:any){
+    console.log("kkkk===>",IsTop,offer)
+
     if(this.myValidations.valid){
 
     const formData = new FormData();
@@ -72,16 +74,16 @@ export class UpdatemenuComponent  {
     formData.append('price',price);
     formData.append('Description',description);
     formData.append('size',size);
-    if(IsTop == 'on'){
-      formData.append('IsTopItem','true');
+    //if(IsTop == 'on'){
+      formData.append('IsTopItem',IsTop);
 
-    }
-    formData.append('IsTopItem','false');
+   // }
+    //formData.append('IsTopItem','false');
     formData.append('ResturantID',resturantID);
-    if(offer == 'on'){
-      formData.append('offer','true');
+    //if(offer == 'on'){
+      formData.append('Offer',offer);
 
-    }
+    //}
     formData.append('ResturantID',resturantID);
     formData.append('CategoryID',categoryID);
     formData.append('PhotoFile',this.selectedFile);
@@ -128,7 +130,7 @@ private validateAllFormFields(formGroup: FormGroup){
 }
 GetCategoryByID(id:any){
   this.CategorieService.GetCategoryById(id).subscribe({next:(data)=>{
-    console.log("kkkkkkkk")
+    //console.log("kkkkkkkk")
     this.cate=data;console.log(this.cate);
   }})
 }

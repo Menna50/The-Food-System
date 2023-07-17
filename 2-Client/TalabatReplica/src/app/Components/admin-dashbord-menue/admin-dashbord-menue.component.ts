@@ -88,13 +88,7 @@ export class AdminDashbordMenueComponent {
     PosterFile:new FormControl(null,[Validators.required]),
     BannearFile:new FormControl(null,[Validators.required]),
     })
-  // GetAllMenuItems(){
-  //   this.service.GetAllMenuItem().subscribe({
-  //     next:(data)=>{this.items=data;console.log(data);},
-  //     error:(err)=>{console.log(err)}
 
-  //   })
-  // }
   GetMenuItemByResID(ResID:any){
     this.service.GetMenuItemByResID(ResID).subscribe({
       next:(data)=>{this.items= data;
@@ -147,6 +141,8 @@ export class AdminDashbordMenueComponent {
 }
 
   Additem (name:any,price:any,description:any,size:any,IsTop:any,resturantID:any,offer:any,categoryID:any){
+    console.log("kkkk===>",IsTop,offer)
+
     if(this.myValidations.valid){
       const formData = new FormData();
       formData.append('Name',name);
@@ -154,22 +150,30 @@ export class AdminDashbordMenueComponent {
       formData.append('Description',description);
       formData.append('size',size);
       formData.append('IsAccepted','false');
-      if(IsTop == 'on'){
-        formData.append('IsTopItem','true');
+      //if(IsTop == 'on'){
+        formData.append('IsTopItem',IsTop);
 
-      }
-      formData.append('IsTopItem','false');
+      //}
+     // else{
+        //formData.append('IsTopItem','false');
+
+      //}
       formData.append('ResturantID',this.ResID);
-      if(offer == 'on'){
-        formData.append('offer','true');
+      //if(offer == 'on'){
+        formData.append('Offer',offer);
 
-      }
+      //}
+     // else{
+       // formData.append('Offer','false');
+     // }
+
+
 
       formData.append('CategoryID',categoryID);
       formData.append('PhotoFile',this.file);
 
 
-console.log({IsTop});
+//console.log({IsTop},{offer});
     this.service.Additem(formData,this.header).subscribe( {next:()=>{this.GetMenuItemByResID(this.ResID);}} )
 
     this.route.navigateByUrl("/Adminmenu");
